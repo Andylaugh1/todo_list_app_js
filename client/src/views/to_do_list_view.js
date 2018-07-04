@@ -35,7 +35,7 @@ ToDoListView.prototype.createDetail= function (label, text) {
   return detail;
 };
 
-ToDoListView.prototype.createDeleteButton= function (listItemId) {
+ToDoListView.prototype.createDeleteButton = function (listItemId) {
   const button = document.createElement('button');
   button.classList.add('delete-btn');
   button.value = listItemId;

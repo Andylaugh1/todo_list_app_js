@@ -9,6 +9,10 @@ ToDoList.prototype.bindEvents = function () {
   PubSub.subscribe('ToDoList:new-task-submitted', (event) => {
     this.postNewTask(event.detail);
   })
+
+  PubSub.subscribe('ToDoListView:list-item-delete-clicked', (event) => {
+    this.deleteTask(event.detail);
+  })
 };
 
 
@@ -28,6 +32,16 @@ ToDoList.prototype.postNewTask = function (listItem) {
       PubSub.publish('ToDoList:data-loaded', to_do_list);
     })
     .catch(console.error);
+};
+
+
+ToDoList.prototype.deleteTask = function(taskId) {
+  const request = new Request(this.url);
+  request.delete(taskId)
+  .then((to_do_list) => {
+    PubSub.publish('ToDoList:data-loaded', to_do_list);
+  })
+  .catch(console.error);
 };
 
 module.exports = ToDoList;

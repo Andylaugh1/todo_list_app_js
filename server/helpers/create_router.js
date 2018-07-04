@@ -24,6 +24,18 @@ const createRouter = function(collection) {
       })
   })
 
+  router.delete('/:id', (req, res) => {
+    const taskId = req.params.id;
+    collection
+    .deleteOne({_id: ObjectID(taskId) })
+    .then(() => {
+      collection
+      .find()
+      .toArray()
+      .then((docs) => res.json(docs));
+    })
+  })
+
     return router;
 
 };
