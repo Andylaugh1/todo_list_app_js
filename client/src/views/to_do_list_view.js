@@ -23,26 +23,26 @@ ToDoListView.prototype.render = function (listItem) {
   this.container.appendChild(listItemContainer);
 };
 
-ListItemView.prototype.createHeading = function (textContent) {
+ToDoListView.prototype.createHeading = function (textContent) {
   const heading = document.createElement('h1');
   heading.textContent = textContent;
   return heading;
 };
 
-ListItemView.prototype.createDetail= function (textContent) {
+ToDoListView.prototype.createDetail= function (textContent) {
   const detail = document.createElement('p');
   detail.textContent = textContent;
   return detail;
 };
 
-ListItemView.prototype.createDeleteButton= function (listItemId) {
+ToDoListView.prototype.createDeleteButton= function (listItemId) {
   const button = document.createElement('button');
   button.classList.add('delete-btn');
-  button.value = ListItemId;
+  button.value = listItemId;
 
   button.addEventListener('click', (event) => {
     PubSub.publish('ToDoListView:list-item-delete-clicked', event.target.value);
   });
   return button;
 };
-module.exports = ListItemView;
+module.exports = ToDoListView;
