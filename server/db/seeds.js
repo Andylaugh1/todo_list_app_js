@@ -15,6 +15,6 @@ db.to_do_list.insertMany([
   {
     task: "finish cv",
     date: "2018-04-06",
-    complete: "No"
+    complete: "No"\
   }
 ]);

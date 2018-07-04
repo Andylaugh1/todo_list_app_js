@@ -7,7 +7,7 @@ const createRouter = require('./helpers/create_router.js');
 
 MongoClient.connect('mongodb://localhost:27017', (err, client) => {
 const db = client.db("to_do_list_app");
-const toDoList = db.collection(to_do_list);
+const toDoList = db.collection('to_do_list');
 const toDoListRouter = createRouter(toDoList);
 app.use('/api/to_do_list', toDoListRouter);
 });
