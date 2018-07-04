@@ -12,9 +12,20 @@ const createRouter = function(collection) {
     .then((docs) => res.json(docs));
   });
 
-  return router;
+  router.post('/', (req, res) => {
+    const newData = req.body;
+    collection
+      .insertOne(newData)
+      .then(() => {
+        collection
+          .find()
+          .toArray()
+          .then((docs) => res.json(docs));
+      })
+  })
+
+    return router;
 
 };
 
-
-  module.exports = createRouter;
+module.exports = createRouter;
