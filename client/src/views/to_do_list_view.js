@@ -29,9 +29,9 @@ ToDoListView.prototype.createHeading = function (textContent) {
   return heading;
 };
 
-ToDoListView.prototype.createDetail= function (textContent) {
+ToDoListView.prototype.createDetail= function (label, text) {
   const detail = document.createElement('p');
-  detail.textContent = textContent;
+  detail.textContent = `${label}: ${text}`;
   return detail;
 };
 
